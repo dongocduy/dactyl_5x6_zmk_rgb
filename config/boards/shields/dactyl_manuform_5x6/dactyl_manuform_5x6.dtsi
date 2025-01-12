@@ -1,10 +1,11 @@
+#include <physical_layouts.dtsi>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/led/led.h>
 / {
     chosen {
-        zmk,underglow = &led_strip;
         zmk,kscan = &kscan0;
-        zmk,matrix_transform = &default_transform;
+        zmk,physical-layout = &physical_layout0;
+        zmk,underglow = &led_strip;
     };
 
     default_transform: keymap_transform_0 {
@@ -34,8 +35,8 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)                   RC(3,11) RC(3,
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-
         diode-direction = "col2row";
+        wakeup-source;
         row-gpios
             = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -85,5 +86,82 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)                   RC(3,11) RC(3,
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+/ {
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "LAYOUT";
+
+        kscan = <&kscan0>;
+        transform = <&default_transform>;
+
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100  350    0       0     0     0>
+            , <&key_physical_attrs 100 100  450    0       0     0     0>
+            , <&key_physical_attrs 100 100  550    0       0     0     0>
+            , <&key_physical_attrs 100 100  650    0       0     0     0>
+            , <&key_physical_attrs 100 100 1200    0       0     0     0>
+            , <&key_physical_attrs 100 100 1300    0       0     0     0>
+            , <&key_physical_attrs 100 100 1400    0       0     0     0>
+            , <&key_physical_attrs 100 100 1500    0       0     0     0>
+            , <&key_physical_attrs 100 100  150   25       0     0     0>
+            , <&key_physical_attrs 100 100  250   25       0     0     0>
+            , <&key_physical_attrs 100 100 1600   25       0     0     0>
+            , <&key_physical_attrs 100 100 1700   25       0     0     0>
+            , <&key_physical_attrs 100 100  350  100       0     0     0>
+            , <&key_physical_attrs 100 100  450  100       0     0     0>
+            , <&key_physical_attrs 100 100  550  100       0     0     0>
+            , <&key_physical_attrs 100 100  650  100       0     0     0>
+            , <&key_physical_attrs 100 100 1200  100       0     0     0>
+            , <&key_physical_attrs 100 100 1300  100       0     0     0>
+            , <&key_physical_attrs 100 100 1400  100       0     0     0>
+            , <&key_physical_attrs 100 100 1500  100       0     0     0>
+            , <&key_physical_attrs 100 100  150  125       0     0     0>
+            , <&key_physical_attrs 100 100  250  125       0     0     0>
+            , <&key_physical_attrs 100 100 1600  125       0     0     0>
+            , <&key_physical_attrs 100 100 1700  125       0     0     0>
+            , <&key_physical_attrs 100 100  350  200       0     0     0>
+            , <&key_physical_attrs 100 100  450  200       0     0     0>
+            , <&key_physical_attrs 100 100  550  200       0     0     0>
+            , <&key_physical_attrs 100 100  650  200       0     0     0>
+            , <&key_physical_attrs 100 100 1200  200       0     0     0>
+            , <&key_physical_attrs 100 100 1300  200       0     0     0>
+            , <&key_physical_attrs 100 100 1400  200       0     0     0>
+            , <&key_physical_attrs 100 100 1500  200       0     0     0>
+            , <&key_physical_attrs 100 100  150  225       0     0     0>
+            , <&key_physical_attrs 100 100  250  225       0     0     0>
+            , <&key_physical_attrs 100 100 1600  225       0     0     0>
+            , <&key_physical_attrs 100 100 1700  225       0     0     0>
+            , <&key_physical_attrs 100 100  350  300       0     0     0>
+            , <&key_physical_attrs 100 100  450  300       0     0     0>
+            , <&key_physical_attrs 100 100  550  300       0     0     0>
+            , <&key_physical_attrs 100 100  650  300       0     0     0>
+            , <&key_physical_attrs 100 100 1200  300       0     0     0>
+            , <&key_physical_attrs 100 100 1300  300       0     0     0>
+            , <&key_physical_attrs 100 100 1400  300       0     0     0>
+            , <&key_physical_attrs 100 100 1500  300       0     0     0>
+            , <&key_physical_attrs 100 100  150  325       0     0     0>
+            , <&key_physical_attrs 100 100  250  325       0     0     0>
+            , <&key_physical_attrs 100 100 1600  325       0     0     0>
+            , <&key_physical_attrs 100 100 1700  325       0     0     0>
+            , <&key_physical_attrs 100 100  350  400       0     0     0>
+            , <&key_physical_attrs 100 100  450  400       0     0     0>
+            , <&key_physical_attrs 100 100 1400  400       0     0     0>
+            , <&key_physical_attrs 100 100 1500  400       0     0     0>
+            , <&key_physical_attrs 100 175  700  375    3000   650   425>
+            , <&key_physical_attrs 100 200  600  425    3000   650   425>
+            , <&key_physical_attrs 100 100 1350  600    3000  1300   425>
+            , <&key_physical_attrs 100 100 1225  612    3000  1300   425>
+            , <&key_physical_attrs 100 100 1375  700    3000  1300   425>
+            , <&key_physical_attrs 100 100 1250  725    3000  1300   425>
+            , <&key_physical_attrs 100 100  500  600 (-3000)   650   425>
+            , <&key_physical_attrs 100 100  625  613 (-3000)   650   425>
+            , <&key_physical_attrs 100 100  475  700 (-3000)   650   425>
+            , <&key_physical_attrs 100 100  600  725 (-3000)   650   425>
+            , <&key_physical_attrs 100 176 1150  375 (-3000)  1300   425>
+            , <&key_physical_attrs 100 200 1250  425 (-3000)  1300   425>
+            ;
     };
 };
